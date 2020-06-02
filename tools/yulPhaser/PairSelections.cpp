@@ -64,7 +64,10 @@ vector<tuple<size_t, size_t>> PairsFromRandomSubset::materialise(size_t _poolSiz
 			} while (selectedIndices.size() % 2 != 0);
 		}
 		else
-			selectedIndices.erase(selectedIndices.begin() + SimulationRNG::uniformInt(0, selectedIndices.size() - 1));
+			selectedIndices.erase(
+				selectedIndices.begin() +
+				static_cast<ptrdiff_t>(SimulationRNG::uniformInt(0, selectedIndices.size() - 1))
+			);
 	}
 	assert(selectedIndices.size() % 2 == 0);
 
@@ -73,10 +76,10 @@ vector<tuple<size_t, size_t>> PairsFromRandomSubset::materialise(size_t _poolSiz
 	{
 		size_t position1 = SimulationRNG::uniformInt(0, selectedIndices.size() - 1);
 		size_t value1 = selectedIndices[position1];
-		selectedIndices.erase(selectedIndices.begin() + position1);
+		selectedIndices.erase(selectedIndices.begin() + static_cast<ptrdiff_t>(position1));
 		size_t position2 = SimulationRNG::uniformInt(0, selectedIndices.size() - 1);
 		size_t value2 = selectedIndices[position2];
-		selectedIndices.erase(selectedIndices.begin() + position2);
+		selectedIndices.erase(selectedIndices.begin() + static_cast<ptrdiff_t>(position2));
 
 		selectedPairs.push_back({value1, value2});
 	}
