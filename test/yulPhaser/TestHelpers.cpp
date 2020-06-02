@@ -72,7 +72,7 @@ size_t phaser::test::countDifferences(Chromosome const& _chromosome1, Chromosome
 {
 	size_t count = 0;
 	for (size_t i = 0; i < min(_chromosome1.length(), _chromosome2.length()); ++i)
-		count += static_cast<int>(_chromosome1.optimisationSteps()[i] != _chromosome2.optimisationSteps()[i]);
+		count += static_cast<size_t>(_chromosome1.optimisationSteps()[i] != _chromosome2.optimisationSteps()[i]);
 
 	return count + abs(static_cast<int>(_chromosome1.length() - _chromosome2.length()));
 }
