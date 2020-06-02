@@ -30,7 +30,7 @@ vector<tuple<size_t, size_t>> RandomPairSelection::materialise(size_t _poolSize)
 	if (_poolSize < 2)
 		return {};
 
-	size_t count = static_cast<size_t>(round(_poolSize * m_selectionSize));
+	auto count = static_cast<size_t>(round(_poolSize * m_selectionSize));
 
 	vector<tuple<size_t, size_t>> selection;
 	for (size_t i = 0; i < count; ++i)
@@ -81,9 +81,9 @@ vector<tuple<size_t, size_t>> PairsFromRandomSubset::materialise(size_t _poolSiz
 		size_t value2 = selectedIndices[position2];
 		selectedIndices.erase(selectedIndices.begin() + static_cast<ptrdiff_t>(position2));
 
-		selectedPairs.push_back({value1, value2});
+		selectedPairs.emplace_back(value1, value2);
 	}
-	assert(selectedIndices.size() == 0);
+	assert(selectedIndices.empty());
 
 	return selectedPairs;
 }
