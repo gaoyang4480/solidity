@@ -11,3 +11,6 @@ contract C {
 		return c;
 	}
 }
+// ----
+// Warning: (265-270): Error trying to invoke SMT solver.
+// Warning: (265-270): Overflow (resulting value larger than 2**256 - 1) happens here
