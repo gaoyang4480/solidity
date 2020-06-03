@@ -7,6 +7,9 @@ Language Features:
 
 Compiler Features:
  * Code Generator: Do not introduce new source references for small internal routines.
+ * Code Generator: Support calling bound library functions.
+ * Code Generator: Support calling internal library functions through internal dispatch.
+ * Code Generator: Do not generate internal dispatch entries for functions that are never called through it.
  * Build system: Update the soljson.js build to emscripten 1.39.15 and boost 1.73.0 and include Z3 for integrated SMTChecker support without the callback mechanism.
  * Commandline Interface: Adds new option ``--base-path PATH`` to use the given path as the root of the source tree instead of the root of the filesystem.
  * SMTChecker: Support array ``length``.
@@ -31,6 +34,7 @@ Bugfixes:
  * SMTChecker: Fix internal error when short circuiting Boolean expressions with function calls in state variable initialization.
  * SMTChecker: Fix internal error when assigning to index access inside branches.
  * SMTChecker: Fix internal error on try/catch clauses with parameters.
+ * Commandline Interface: Fix internal error when using ``--assemble`` or ``--yul`` options with ``--machine ewasm`` but without specifying ``--yul-dialect``.
 
 ### 0.6.8 (2020-05-14)
 
