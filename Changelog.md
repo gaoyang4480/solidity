@@ -9,6 +9,8 @@ Compiler Features:
  * Code Generator: Do not introduce new source references for small internal routines.
  * Build system: Update the soljson.js build to emscripten 1.39.15 and boost 1.73.0 and include Z3 for integrated SMTChecker support without the callback mechanism.
  * Commandline Interface: Adds new option ``--base-path PATH`` to use the given path as the root of the source tree instead of the root of the filesystem.
+ * Commandline Interface: Exit with an error if more than one mode (i.e. ``--assemble``, ``--strict-assembly``, ``--yul``, ``--link``, ``--standard-json`` or ``--import-ast``) is selected at the same time.
+ * Commandline Interface: Exit with an error if ``--output-dir``, ``--gas`` or ``--combined-json`` option is used in assembly/yul mode or if ``--yul-dialect`` or ``--machine`` is used outside of that mode.
  * SMTChecker: Support array ``length``.
  * SMTChecker: Support array ``push`` and ``pop``.
  * SMTChecker: General support to BitVectors and the bitwise ``and`` operator.
