@@ -1476,7 +1476,11 @@ string YulUtilFunctions::extractFromStorageValue(Type const& _type, size_t _offs
 
 string YulUtilFunctions::cleanupFromStorageFunction(Type const& _type, bool _splitFunctionTypes)
 {
-	solAssert(_type.isValueType(), "");
+	solAssert(
+		_type.isValueType() ||
+		dynamic_cast<ReferenceType const*>(&_type) ||
+		dynamic_cast<MappingType const*>(&_type),
+	"");
 	if (_type.category() == Type::Category::Function)
 		solUnimplementedAssert(!_splitFunctionTypes, "");
 
